@@ -1,0 +1,5 @@
+app_local_path: "./app"
+app_remote_path: "/var/www/nodeapp"
+node_version: "18.x"
+pm2_app_name: "test-node-app"
+ec2_ip: 13.218.174.165

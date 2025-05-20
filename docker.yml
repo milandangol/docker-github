@@ -1,0 +1,22 @@
+- name: Deploy Docker app on EC2
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Install Docker
+      apt:
+        name: docker.io
+        state: present
+        update_cache: yes
+
+    - name: Start Docker service
+      service:
+        name: docker
+        state: started
+        enabled: true
+
+    - name: Pull Docker image
+      command: docker pull milandangol/ansible:v1
+
+    - name: Run Docker container
+      command: docker run -d --name my-app -p 3000:3000 milandangol/ansible:v1
